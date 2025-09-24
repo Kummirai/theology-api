@@ -24,4 +24,12 @@ const getCourseById = async (id) => {
     .toArray();
 };
 
-export { connectToDatabase, getAllCourses, getCourseById };
+const getWeeksForCourse = async (id, courseWeeks) => {
+  return await client
+    .db("theology")
+    .collection("courses")
+    .find({ courseId: id }, { projection: { weeks: 1, _id: 0 } })
+    .toArray();
+};
+
+export { connectToDatabase, getAllCourses, getCourseById, getWeeksForCourse };

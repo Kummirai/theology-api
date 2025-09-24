@@ -1,5 +1,6 @@
 import { getCourseById } from "../models/db.js";
 
+//Returns full details of a specific course.
 const courseByIdController = async (req, res) => {
   const { id } = req.params;
   const course = await getCourseById(id);
