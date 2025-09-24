@@ -1,14 +1,12 @@
 import express from "express";
 import { connectToDatabase, getAllCourses } from "./models/db.js";
+import { coursesRoute } from "./routes/allCoursesRoute.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
-app.get("/api/courses", async (req, res) => {
-  const allCourses = await getAllCourses();
-  res.send(allCourses);
-});
+app.use("/api", coursesRoute);
 
 await connectToDatabase();
 app.listen(PORT, () => {
