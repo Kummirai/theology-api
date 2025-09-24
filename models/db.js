@@ -36,7 +36,7 @@ const getWeekCourse = async (id, weekNumber) => {
     .db("theology")
     .collection("courses")
     .findOne(
-      { courseId: id, "weeks.week":  parseInt(weekNumber)},
+      { courseId: id, "weeks.week": parseInt(weekNumber) },
       { projection: { "weeks.$": 1 } }
     );
 };
