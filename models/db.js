@@ -16,4 +16,12 @@ const getAllCourses = async () => {
   return await client.db("theology").collection("courses").find().toArray();
 };
 
-export { connectToDatabase, getAllCourses };
+const getCourseById = async (id) => {
+  return await client
+    .db("theology")
+    .collection("courses")
+    .find({ courseId: id })
+    .toArray();
+};
+
+export { connectToDatabase, getAllCourses, getCourseById };
