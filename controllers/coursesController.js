@@ -2,6 +2,7 @@ import {
   getWeeksForCourse,
   getAllCourses,
   getCourseById,
+  getWeekCourse,
 } from "../models/db.js";
 
 //Returns all weeks for a specific course.
@@ -24,4 +25,16 @@ const allCoursesController = async (req, res) => {
   res.send(allCourses);
 };
 
-export { allCoursesController, courseByIdController, weeksForCourseController };
+//Returns details for a specific week (topic, outcomes, readings, etc.).
+const weekCourseConroller = async (req, res) => {
+  const { id, weekNumber } = req.params;
+  const week = await getWeekCourse(id, weekNumber);
+  res.json(week);
+};
+
+export {
+  allCoursesController,
+  courseByIdController,
+  weeksForCourseController,
+  weekCourseConroller,
+};

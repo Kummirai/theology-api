@@ -24,11 +24,27 @@ const getCourseById = async (id) => {
     .toArray();
 };
 
-const getWeeksForCourse = async (id, courseWeeks) => {
+const getWeeksForCourse = async (id) => {
   return await client
     .db("theology")
     .collection("courses")
     .findOne({ courseId: id }, { projection: { weeks: 1, _id: 0 } });
 };
 
-export { connectToDatabase, getAllCourses, getCourseById, getWeeksForCourse };
+const getWeekCourse = async (id, weekNumber) => {
+  return await client
+    .db("theology")
+    .collection("courses")
+    .findOne(
+      { courseId: id, "weeks.week":  parseInt(weekNumber)},
+      { projection: { "weeks.$": 1 } }
+    );
+};
+
+export {
+  connectToDatabase,
+  getAllCourses,
+  getCourseById,
+  getWeeksForCourse,
+  getWeekCourse,
+};
