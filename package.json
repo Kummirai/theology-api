@@ -1,0 +1,15 @@
+{
+  "name": "theology-api",
+  "version": "1.0.0",
+  "description": "theology degree courses",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Milton Kummirai",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongodb": "^6.20.0"
+  }
+}
