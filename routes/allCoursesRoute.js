@@ -1,7 +1,9 @@
 import { Router } from "express";
-import { allCoursesController } from "../controllers/allCoursesController.js";
-import { courseByIdController } from "../controllers/courseByIdController.js";
-import { weeksForCourseController } from "../controllers/weeksForCourseController.js";
+import {
+  allCoursesController,
+  courseByIdController,
+  weeksForCourseController,
+} from "../controllers/coursesController.js";
 
 const coursesRoute = Router();
 
