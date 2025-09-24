@@ -12,4 +12,8 @@ const connectToDatabase = async () => {
   }
 };
 
-export { connectToDatabase };
+const getAllCourses = async () => {
+  return await client.db("theology").collection("courses").find().toArray();
+};
+
+export { connectToDatabase, getAllCourses };
