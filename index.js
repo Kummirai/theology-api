@@ -10,5 +10,5 @@ app.use("/api/courses", coursesRoute);
 
 await connectToDatabase();
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}/api/courses`);
 });

@@ -20,31 +20,19 @@ const getCourseById = async (id) => {
   return await client
     .db("theology")
     .collection("courses")
-    .find({ courseId: id })
+    .find({ course_id: id })
     .toArray();
 };
 
-const getWeeksForCourse = async (id) => {
+const getWeekCourse = async (id, semesterNumber, weekNumber) => {
   return await client
     .db("theology")
     .collection("courses")
-    .findOne({ courseId: id }, { projection: { weeks: 1, _id: 0 } });
+    .findOne({
+      course_id: id,
+      semester: parseInt(semesterNumber),
+      week_number: parseInt(weekNumber),
+    });
 };
 
-const getWeekCourse = async (id, weekNumber) => {
-  return await client
-    .db("theology")
-    .collection("courses")
-    .findOne(
-      { courseId: id, "weeks.week": parseInt(weekNumber) },
-      { projection: { "weeks.$": 1 } }
-    );
-};
-
-export {
-  connectToDatabase,
-  getAllCourses,
-  getCourseById,
-  getWeeksForCourse,
-  getWeekCourse,
-};
+export { connectToDatabase, getAllCourses, getCourseById, getWeekCourse };
