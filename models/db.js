@@ -20,14 +20,27 @@ const getCourseById = async (id) => {
   return await client
     .db("theology")
     .collection("courses")
-    .find({ course_id: id })
+    .find({ "course.code": id })
+    .toArray();
+};
+
+const getAllModules = async () => {
+  return await client.db("theology").collection("modules").find().toArray();
+};
+
+const getCourseModules = async (course) => {
+  console.log(course);
+  return await client
+    .db("theology")
+    .collection("modules")
+    .find({ course_id: course })
     .toArray();
 };
 
 const getWeekCourse = async (id, semesterNumber, weekNumber) => {
   return await client
     .db("theology")
-    .collection("courses")
+    .collection("modules")
     .findOne({
       course_id: id,
       semester: parseInt(semesterNumber),
@@ -35,4 +48,11 @@ const getWeekCourse = async (id, semesterNumber, weekNumber) => {
     });
 };
 
-export { connectToDatabase, getAllCourses, getCourseById, getWeekCourse };
+export {
+  connectToDatabase,
+  getAllCourses,
+  getCourseById,
+  getAllModules,
+  getCourseModules,
+  getWeekCourse,
+};
