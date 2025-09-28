@@ -1,4 +1,8 @@
-import { getAllCourses, getCourseById, getWeekCourse } from "../models/db.js";
+import {
+  getAllCourses,
+  getCourseById,
+  getSemesterCourses,
+} from "../models/db.js";
 
 //Returns full details of a specific course.
 const courseByIdController = async (req, res) => {
@@ -13,11 +17,10 @@ const allCoursesController = async (req, res) => {
   res.send(allCourses);
 };
 
-//Returns details for a specific week (topic, outcomes, readings, etc.).
-const weekCourseConroller = async (req, res) => {
-  const { id, semester, week } = req.params;
-  const weekData = await getWeekCourse(id, semester, week);
-  res.json(weekData);
+const semesterCourseController = async (req, res) => {
+  const { year, semester } = req.params;
+  const semesterCourses = await getSemesterCourses(year, semester);
+  res.json(semesterCourses);
 };
 
-export { allCoursesController, courseByIdController, weekCourseConroller };
+export { allCoursesController, courseByIdController, semesterCourseController };

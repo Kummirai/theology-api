@@ -10,9 +10,8 @@ const modulesController = async (req, res) => {
 };
 
 const courseModulesController = async (req, res) => {
-  const { course } = req.params;
-  console.log(course);
-  const courseModules = await getCourseModules(course);
+  const { year, course } = req.params;
+  const courseModules = await getCourseModules(year, course);
   res.json(courseModules);
 };
 

@@ -16,6 +16,14 @@ const getAllCourses = async () => {
   return await client.db("theology").collection("courses").find().toArray();
 };
 
+const getSemesterCourses = async (year, semester) => {
+  return await client
+    .db("theology")
+    .collection("modules")
+    .find({ year: parseInt(year), semester: parseInt(semester) })
+    .toArray();
+};
+
 const getCourseById = async (id) => {
   return await client
     .db("theology")
@@ -29,7 +37,6 @@ const getAllModules = async () => {
 };
 
 const getCourseModules = async (course) => {
-  console.log(course);
   return await client
     .db("theology")
     .collection("modules")
@@ -55,4 +62,5 @@ export {
   getAllModules,
   getCourseModules,
   getWeekCourse,
+  getSemesterCourses,
 };
