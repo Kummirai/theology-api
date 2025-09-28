@@ -55,6 +55,15 @@ const getWeekCourse = async (id, semesterNumber, weekNumber) => {
     });
 };
 
+const getModuleById = async (moduleId) => {
+  console.log(moduleId);
+  return await client
+    .db("theology")
+    .collection("modules")
+    .find({ module_id: moduleId })
+    .toArray();
+};
+
 export {
   connectToDatabase,
   getAllCourses,
@@ -63,4 +72,5 @@ export {
   getCourseModules,
   getWeekCourse,
   getSemesterCourses,
+  getModuleById,
 };

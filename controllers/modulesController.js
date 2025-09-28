@@ -2,6 +2,7 @@ import {
   getAllModules,
   getCourseModules,
   getWeekCourse,
+  getModuleById,
 } from "../models/db.js";
 
 const modulesController = async (req, res) => {
@@ -21,8 +22,18 @@ const courseModuleByWeekNumberController = async (req, res) => {
   res.json(courseWeek);
 };
 
+const moduleByIdController = async (req, res) => {
+  console.log("request received!");
+
+  const { moduleId } = req.params;
+  console.log(moduleId);
+  const module = await getModuleById(moduleId);
+  res.json(module);
+};
+
 export {
   modulesController,
   courseModulesController,
   courseModuleByWeekNumberController,
+  moduleByIdController,
 };

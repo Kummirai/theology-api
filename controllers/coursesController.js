@@ -13,6 +13,8 @@ const courseByIdController = async (req, res) => {
 
 //Returns a list of all courses with basic info (id, title, credits, year, semester).
 const allCoursesController = async (req, res) => {
+  console.log("request received!");
+
   const allCourses = await getAllCourses();
   res.send(allCourses);
 };
