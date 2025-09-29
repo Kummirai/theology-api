@@ -16,7 +16,7 @@ const allCoursesController = async (req, res) => {
   console.log("request received!");
 
   const allCourses = await getAllCourses();
-  res.send(allCourses);
+  res.json(allCourses);
 };
 
 const semesterCourseController = async (req, res) => {

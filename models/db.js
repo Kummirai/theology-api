@@ -64,6 +64,10 @@ const getModuleById = async (moduleId) => {
     .toArray();
 };
 
+const getAllElectives = async () => {
+  return await client.db("theology").collection("electives").find().toArray();
+};
+
 export {
   connectToDatabase,
   getAllCourses,
@@ -73,4 +77,5 @@ export {
   getWeekCourse,
   getSemesterCourses,
   getModuleById,
+  getAllElectives
 };
