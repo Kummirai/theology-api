@@ -68,6 +68,11 @@ const getAllElectives = async () => {
   return await client.db("theology").collection("electives").find().toArray();
 };
 
+const getAllGeneralEducation  = async () => {
+  return await client.db("theology").collection("general_education").find().toArray();
+};
+
+
 export {
   connectToDatabase,
   getAllCourses,
@@ -77,5 +82,6 @@ export {
   getWeekCourse,
   getSemesterCourses,
   getModuleById,
-  getAllElectives
+  getAllElectives,
+  getAllGeneralEducation
 };
